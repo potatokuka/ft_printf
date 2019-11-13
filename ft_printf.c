@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 10:15:46 by greed          #+#    #+#                */
-/*   Updated: 2019/11/12 16:49:34 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/13 11:36:38 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ void			ft_flag_check(const char **input, t_conv *conv)
 		else if (ft_isdigit(*(*input + 1)))
 				conv->precision = ft_atoi(*input + 1);
 		else
-				conv->precision = 0;
+		{
+			conv->precision = 0;
+			*input -= 1;
+		}
 		*input += 1;
 	}
 	if (conv->precision != -2 || conv->width != 0)
