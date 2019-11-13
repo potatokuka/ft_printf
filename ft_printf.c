@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 10:15:46 by greed          #+#    #+#                */
-/*   Updated: 2019/11/13 11:36:38 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/13 15:33:45 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void			ft_flag_vars_set(t_conv *conv)
 	conv->padzero = 0;
 	conv->width = 0;
 	conv->precision = -2;
-	conv->sign = 0;
+	conv->blank = 0;
+	conv->pos = 0;
 }
 
 void			ft_find_type(const char **input, t_conv *conv)
@@ -45,6 +46,19 @@ void			ft_find_type(const char **input, t_conv *conv)
 	}
 }
 
+void			ft_precision_check(const char **input, t_conv *conv)
+{
+	if (*(*input + 1) == '*')
+		conv->precision = -1;
+	else if (ft_isdigit(*(*input + 1)))
+		conv->precision = ft_atoi(*input + 1);
+	else
+	{
+		conv->precision = 0;
+		*input -= 1;
+	}
+	*input += 1;
+}
 
 void			ft_flag_check(const char **input, t_conv *conv)
 {
@@ -52,28 +66,19 @@ void			ft_flag_check(const char **input, t_conv *conv)
 		conv->left = 1;
 	else if (**input == '0')
 		conv->padzero = 1;
-	else if (**input == '+' || **input == ' ')
-		conv->sign = **input;
+	else if (**input == ' ')
+		conv->blank = **input;
+	else if (**input == '+')
+		conv->blank = **input;
 	else if (**input == '*')
 		conv->width = -1;
 	else if (ft_isdigit(**input))
 		conv->width = ft_atoi(*input);
 	else if (**input == '.')
-	{
-		if (*(*input + 1) == '*')
-				conv->precision = -1;
-		else if (ft_isdigit(*(*input + 1)))
-				conv->precision = ft_atoi(*input + 1);
-		else
-		{
-			conv->precision = 0;
-			*input -= 1;
-		}
-		*input += 1;
-	}
+		ft_precision_check(input, conv);
 	if (conv->precision != -2 || conv->width != 0)
-			while (ft_isdigit(*(*input)) && ft_isdigit(*(*input + 1)))
-					*input += 1;
+		while (ft_isdigit(*(*input)) && ft_isdigit(*(*input + 1)))
+			*input += 1;
 }
 
 void			ft_converter_link(t_conv *conv, va_list a_list, int *c_print)

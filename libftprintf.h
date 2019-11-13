@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 09:35:37 by greed          #+#    #+#                */
-/*   Updated: 2019/11/12 17:11:39 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/13 15:33:14 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ typedef struct		s_conv
 	int				padzero;
 	int				width;
 	int				precision;
-	char			sign;
+	char			blank;
 	char			type;
+	char			pos;
 }					t_conv;
 typedef void	(*t_cfunc)(t_conv *, va_list, int *);
 
@@ -45,4 +46,5 @@ void		ft_print_percent(t_conv *conv, va_list a_list, int *c_print);
 void		ft_pad_width(int width, int precision, int pad, int *c_print);
 void		ft_putstr_c_fd(char *str, int fd, int n, int *c_print);
 void		ft_putchar_c_fd(char c, int fd, int *c_print);
+void		ft_precision_check(const char **input, t_conv *conv);
 #endif
