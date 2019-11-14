@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 11:53:05 by greed          #+#    #+#                */
-/*   Updated: 2019/11/14 14:52:19 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/14 15:55:27 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_conv_dec(t_conv *conv, va_list a_list, int *c_print)
 	num = va_arg(a_list, int);
 	if (num < 0)
 	{
-		conv->pos = '-';
+		conv->neg = '-';
 		conv->hassign = 1;
 	}
 	conv->numlen = ft_nbr_size(num);

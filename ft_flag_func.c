@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 17:13:38 by greed          #+#    #+#                */
-/*   Updated: 2019/11/13 17:15:00 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/14 15:49:21 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void			ft_flag_check(const char **input, t_conv *conv)
 	else if (**input == ' ')
 		conv->blank = **input;
 	else if (**input == '+')
+	{
 		conv->pos = **input;
+		conv->hassign = 1;
+	}
 	else if (**input == '*')
 		conv->width = -1;
 	else if (ft_isdigit(**input))

@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 09:35:37 by greed          #+#    #+#                */
-/*   Updated: 2019/11/14 14:51:10 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/14 15:45:31 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_conv
 	char			pos;
 	char			len;
 	char			hassign;
+	char			neg;
 }					t_conv;
 typedef void	(*t_cfunc)(t_conv *, va_list, int *);
 
@@ -56,4 +57,5 @@ void		ft_putnbr_c_fd(int n, int fd, t_conv *conv, int *c_print);
 int			ft_nbr_size(int i);
 void		ft_conv_dec(t_conv *conv, va_list a_list, int *c_print);
 void		ft_trunc_width(int n, int fd, t_conv *conv, int *c_print);
+void		ft_print_sign(int fd, t_conv *conv, int *c_print);
 #endif

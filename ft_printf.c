@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 10:15:46 by greed          #+#    #+#                */
-/*   Updated: 2019/11/14 13:57:16 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/14 15:50:08 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void			ft_flag_vars_set(t_conv *conv)
 	conv->blank = 0;
 	conv->pos = 0;
 	conv->len = 0;
+	conv->hassign = 0;
+	conv->neg = 0;
 }
 
 void			ft_converter_link(t_conv *conv, va_list a_list, int *c_print)

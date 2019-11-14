@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 13:33:03 by greed          #+#    #+#                */
-/*   Updated: 2019/11/14 14:53:21 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/14 16:07:34 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ void		ft_putnbr_c_fd(int n, int fd, t_conv *conv, int *c_print)
 
 	res = 0;
 	if (conv->hassign == 1)
-	{
-		ft_putchar_c_fd(conv->pos, fd, c_print);
-		conv->hassign -= 1;
-	}
+		ft_print_sign(fd, conv, c_print);
 	if (n < 0)
 		res = (unsigned int)(n * -1);
 	else
@@ -57,9 +54,10 @@ void		ft_trunc_width(int n, int fd, t_conv *conv, int *c_print)
 	to_print = (conv->precision - conv->numlen);
 	if (conv->hassign == 1)
 		conv->width -= 1;
-	ft_pad_width(conv->width, conv->precision, ' ', c_print);
+	while (conv->width > 0)
+		ft_pad_width(conv->width, conv->precision, ' ', c_print);
 	if (conv->hassign == 1)
-		ft_putchar_c_fd(conv->pos, fd, c_print);
+		ft_print_sign(fd, conv, c_print);
 	while (to_print >= 0)
 	{
 		res = 0;
@@ -68,10 +66,17 @@ void		ft_trunc_width(int n, int fd, t_conv *conv, int *c_print)
 		else
 			res = (unsigned int)n;
 		if (res >= 10)
-			ft_trunc_width(res / 10, fd, conv, c_print);
+			ft_putnbr_c_fd(res / 10, fd, conv, c_print);
 		to_print -= 1;
 		ft_putchar_c_fd((char)(res % 10 + '0'), fd, c_print);
 	}
 }
 
-void		ft_print_sign(int n, int fd, t_conv *conv, int *c_print)
+void		ft_print_sign(int fd, t_conv *conv, int *c_print)
+{
+	if (conv->pos == '+' && (conv->neg != '-'))
+		ft_putchar_c_fd(conv->pos, fd, c_print);
+	if (conv->neg == '-')
+		ft_putchar_c_fd(conv->neg, fd, c_print);
+	conv->hassign = 0;
+}
