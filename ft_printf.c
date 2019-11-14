@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 10:15:46 by greed          #+#    #+#                */
-/*   Updated: 2019/11/13 17:15:40 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/14 13:57:16 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void			ft_flag_vars_set(t_conv *conv)
 	conv->precision = -2;
 	conv->blank = 0;
 	conv->pos = 0;
+	conv->len = 0;
 }
-
-
 
 void			ft_converter_link(t_conv *conv, va_list a_list, int *c_print)
 {
@@ -36,8 +35,8 @@ void			ft_converter_link(t_conv *conv, va_list a_list, int *c_print)
 	funcs[0] = &ft_print_char;
 	funcs[1] = &ft_print_string;
 	// funcs[2] = &ft_print_pointer;
-	// funcs[3] = &ft_print_int;
-	// funcs[4] = &ft_print_int;
+	funcs[3] = &ft_conv_dec;
+	funcs[4] = &ft_conv_dec;
 	// funcs[5] = &ft_print_uint;
 	// funcs[6] = &ft_print_hex_lower;
 	// funcs[7] = &ft_print_hex_upper;

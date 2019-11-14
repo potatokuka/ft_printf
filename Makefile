@@ -6,12 +6,13 @@
 #    By: greed <greed@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 10:31:09 by greed          #+#    #+#                 #
-#    Updated: 2019/11/12 17:30:07 by greed         ########   odam.nl          #
+#    Updated: 2019/11/14 13:34:39 by greed         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
-CFILES      =   ft_printf.c ft_print_func.c ft_helper.c
+CFILES      =   ft_printf.c ft_print_func.c ft_helper.c ft_flag_func.c\
+	ft_print_num.c ft_convs.c
 OFILES      =   $(CFILES:.c=.o)
 BONUS_SRCS  =	
 BONUS_CFILES=	$(BONUS_SRCS:%=%.c)
