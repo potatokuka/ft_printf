@@ -6,13 +6,13 @@
 #    By: greed <greed@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 10:31:09 by greed          #+#    #+#                 #
-#    Updated: 2019/11/14 13:34:39 by greed         ########   odam.nl          #
+#    Updated: 2019/11/15 13:40:46 by greed         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
 CFILES      =   ft_printf.c ft_print_func.c ft_helper.c ft_flag_func.c\
-	ft_print_num.c ft_convs.c
+	ft_print_num.c ft_convs.c main.c ft_uint.c ft_xX.c
 OFILES      =   $(CFILES:.c=.o)
 BONUS_SRCS  =	
 BONUS_CFILES=	$(BONUS_SRCS:%=%.c)
@@ -28,7 +28,7 @@ LIBFT_CFILES	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 	ft_lstlast_bonus.c ft_lstsize_bonus.c ft_lstdelone_bonus.c\
 	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 LIBFT_OFILES=	$(LIBFT_CFILES:.c=.o)
-FLAGS       =   -Wall -Werror -Wextra
+FLAGS       =   -Wall -Werror -Wextra -Wno-unused-parameter
 
 # COLORS
 PINK	= \x1b[35;01m
@@ -72,3 +72,6 @@ bonus: $(OFILES) $(BOFILES) $(NAME)
 	@ar rc $(NAME) $(OFILES) $(BOFILES)
 	@ranlib $(NAME)
 	@echo "$(GREEN)Done"
+
+test: $(NAME)
+	gcc main.c $(NAME) -o tests

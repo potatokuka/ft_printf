@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 17:13:38 by greed          #+#    #+#                */
-/*   Updated: 2019/11/14 15:49:21 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/15 15:22:17 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ void			ft_precision_check(const char **input, t_conv *conv)
 
 void			ft_flag_check(const char **input, t_conv *conv)
 {
-	if (**input == '-')
+	if (**input == '#')
+		conv->hash = 1;
+	else if (**input == '-')
 		conv->left = 1;
 	else if (**input == '0')
 		conv->padzero = 1;
-	else if (**input == ' ')
-		conv->blank = **input;
-	else if (**input == '+')
+	else if (**input == ' ' || **input == '+')
 	{
-		conv->pos = **input;
+		conv->sign = **input;
 		conv->hassign = 1;
 	}
 	else if (**input == '*')
@@ -72,3 +72,10 @@ void			ft_flag_check(const char **input, t_conv *conv)
 		while (ft_isdigit(*(*input)) && ft_isdigit(*(*input + 1)))
 			*input += 1;
 }
+
+// check for input[i] against legnth array "llhh"
+// if input [i+1] == 'l' && input == length[0]
+// if input [i+1] == 'h' && input == length[3]
+// run through the input string fully with [i]
+// first to make sure you dont move the string
+// and fuck up other checks.
