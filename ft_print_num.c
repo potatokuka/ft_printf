@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 13:33:03 by greed          #+#    #+#                */
-/*   Updated: 2019/11/15 12:45:17 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/18 14:27:37 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void		ft_print_int(t_conv *conv, va_list a_list, int *lv)
 {
 	int		num;
 
+	if (conv->size == 1 || conv->size == 2)
+		return (ft_size_num(conv, a_list, lv));
 	num = va_arg(a_list, int);
-	ft_conv_int(conv, num);
+	ft_conv_int(conv, &num);
 	if (conv->hassign && (conv->padzero || conv->left))
 		ft_putchar_c_fd(conv->sign, 1, lv);
 	if (conv->left)

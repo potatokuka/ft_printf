@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 16:18:54 by greed          #+#    #+#                */
-/*   Updated: 2019/11/15 11:46:13 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/18 15:13:54 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void		ft_print_string(t_conv *conv, va_list a_list, int *lv)
 		conv->precision = conv->len;
 	if (conv->left)
 		ft_putstr_c_fd(str, 1, conv->precision, lv);
-	ft_pad_width(conv->width, conv->precision, ' ', lv);
+	if (!conv->left && conv->padzero)
+		ft_pad_width(conv->width, conv->precision, '0', lv);
+	else
+		ft_pad_width(conv->width, conv->precision, ' ', lv);
 	if (!(conv->left))
 		ft_putstr_c_fd(str, 1, conv->precision, lv);
 }
@@ -54,4 +57,24 @@ void		ft_putchar_c_fd(char c, int fd, int *lv)
 {
 	ft_putchar_fd(c, fd);
 	*lv += 1;
+}
+
+void		ft_print_pct(t_conv *conv, va_list a_list, int *lv)
+{
+	if (conv->precision == -2)
+		conv->precision = 1;
+	if (conv->left)
+	{
+		*lv += 1;
+		ft_putchar_fd('%', 1);
+	}
+	if (!conv->left && conv->padzero)
+		ft_pad_width(conv->width, conv->precision, '0', lv);
+	else
+		ft_pad_width(conv->width, conv->precision, ' ', lv);
+	if (!(conv->left))
+	{
+		*lv += 1;
+		ft_putchar_fd('%', 1);
+	}
 }
