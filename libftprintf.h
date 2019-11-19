@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 09:35:37 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 15:12:16 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/19 12:26:02 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,10 @@ void		ft_llu_num(t_conv *conv, va_list a_list, int *lv);
 void		ft_lluint_c_fd(unsigned long long num, int *lv);
 int			ft_llu_nbr_size(t_conv *conv, unsigned long long num);
 void		ft_conv_llu_int(t_conv *conv, unsigned long long num);
+
+// ptr
+void				ft_print_pointer(t_conv *conv, va_list a_list, int *lv);
+unsigned long		ft_ptr_size(t_conv *conv, unsigned long ptr);
+void				ft_conv_ptr(t_conv *conv, unsigned long ptr);
+void				ft_ptr_res_fd(unsigned long ptr, int *lv);
 #endif
