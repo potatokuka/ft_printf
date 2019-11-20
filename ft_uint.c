@@ -6,19 +6,18 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/15 12:14:25 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 14:49:27 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/20 16:57:26 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 
-void		ft_print_uint(t_conv *conv, va_list a_list, int *lv)
+void			ft_print_uint(t_conv *conv, va_list a_list, int *lv)
 {
 	unsigned int		num;
 
-	if (conv->size == 1 || conv->size == 2)
-		return (ft_llu_num(conv, a_list, lv));
+	ft_negmod(conv, a_list, lv);
 	num = va_arg(a_list, unsigned int);
 	ft_conv_uint(conv, num);
 	if (conv->hassign && (conv->padzero || conv->left))
@@ -43,7 +42,7 @@ void		ft_print_uint(t_conv *conv, va_list a_list, int *lv)
 	}
 }
 
-unsigned int		ft_uint_size(t_conv *conv, unsigned int num)
+unsigned int	ft_uint_size(t_conv *conv, unsigned int num)
 {
 	unsigned int		tmp;
 	int					size;
@@ -60,7 +59,7 @@ unsigned int		ft_uint_size(t_conv *conv, unsigned int num)
 	return (size);
 }
 
-void	ft_conv_uint(t_conv *conv, unsigned int num)
+void			ft_conv_uint(t_conv *conv, unsigned int num)
 {
 	if (num < 0)
 	{
@@ -75,7 +74,7 @@ void	ft_conv_uint(t_conv *conv, unsigned int num)
 		conv->precision = conv->numlen;
 }
 
-void		ft_u_intres_c_fd(unsigned int num, int *lv)
+void			ft_u_intres_c_fd(unsigned int num, int *lv)
 {
 	unsigned int		res;
 	unsigned int		power;

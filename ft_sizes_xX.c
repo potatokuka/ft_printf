@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_sizes_xX.c                                      :+:    :+:            */
+/*   ft_sizes_xx.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 11:41:55 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 15:08:31 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/20 16:57:10 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		ft_print_ll_x(t_conv *conv, va_list a_list, int *lv)
 {
 	unsigned long long		num;
 
+	ft_negmod(conv, a_list, lv);
 	num = va_arg(a_list, unsigned long long);
 	ft_conv_ll_x(conv, &num);
 	if (conv->hash && num != 0 && (conv->left || conv->padzero))
@@ -124,6 +125,7 @@ void		ft_print_ll_up_x(t_conv *conv, va_list a_list, int *lv)
 {
 	unsigned long long		num;
 
+	ft_negmod(conv, a_list, lv);
 	num = va_arg(a_list, unsigned long long);
 	ft_conv_ll_x(conv, &num);
 	if (conv->hash && num != 0 && (conv->left || conv->padzero))

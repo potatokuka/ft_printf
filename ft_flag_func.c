@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 17:13:38 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 13:37:43 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/20 16:34:07 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void			ft_find_type(const char **input, t_conv *conv)
 {
 	char	*types;
 
+	if (ft_valid_arg(input, conv))
+		return ;
 	*input += 1;
 	while (**input)
 	{
@@ -31,6 +33,8 @@ void			ft_find_type(const char **input, t_conv *conv)
 			types++;
 		}
 		ft_flag_check(input, conv);
+		if (ft_valid_arg(input, conv))
+			return ;
 		*input += 1;
 	}
 }
@@ -59,6 +63,8 @@ void			ft_precision_check(const char **input, t_conv *conv)
 		conv->precision = -1;
 	else if (ft_isdigit(*(*input + 1)))
 		conv->precision = ft_atoi(*input + 1);
+	else if (*(*input + 1) == '-' || **input == '-')
+		conv->negmod = 1;
 	else
 	{
 		conv->precision = 0;

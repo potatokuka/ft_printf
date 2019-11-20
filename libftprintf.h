@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 09:35:37 by greed          #+#    #+#                */
-/*   Updated: 2019/11/19 12:26:02 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/20 16:54:58 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct		s_conv
 	int				size;
 	char			type;
 	char			sign;
-	char			len;
+	int				len;
+	int				negmod;
 	char			hassign;
 	char			neg;
 	unsigned int	u_numlen;
@@ -73,11 +74,19 @@ void			ft_x_res_c_fd(unsigned int num, int *lv);
 void			ft_upx_res_c_fd(unsigned int num, int *lv);
 void			ft_print_up_x(t_conv *conv, va_list a_list, int *lv);
 void			ft_print_pct(t_conv *conv, va_list a_list, int *lv);
+int				ft_valid_arg(const char **input, t_conv *conv);
+void			ft_negmod(t_conv *conv, va_list a_list, int *lv);
 
 /*
 ** THIS IS STUFF FOR SIZE BONUS
 */
 void			ft_size_num(t_conv *conv, va_list a_list, int *lv);
+
+// links for correct functions
+void			ft_uint_link(t_conv *conv, va_list a_list, int *lv);
+void			ft_int_link(t_conv *conv, va_list a_list, int *lv);
+void			ft_x_link(t_conv *conv, va_list a_list, int *lv);
+void			ft_up_x_link(t_conv *conv, va_list a_list, int *lv);
 
 // LL
 void			ft_conv_ll_int(t_conv *conv, long long int num);

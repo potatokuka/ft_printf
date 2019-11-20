@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 16:31:59 by greed          #+#    #+#                */
-/*   Updated: 2019/11/15 11:04:24 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/19 13:51:19 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,14 @@ void		ft_putstr_c_fd(char *str, int fd, int n, int *lv)
 		*lv += 1;
 		i++;
 	}
+}
+
+int			ft_valid_arg(const char **input, t_conv *conv)
+{
+	if (!*(*input + 1))
+	{
+		conv->type = 0;
+		return (1);
+	}
+	return (0);
 }

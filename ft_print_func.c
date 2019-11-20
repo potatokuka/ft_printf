@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 16:18:54 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 15:13:54 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/20 13:24:32 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_print_string(t_conv *conv, va_list a_list, int *lv)
 {
 	char		*str;
 
-	str = va_arg(a_list, char *);
+	str = va_arg(a_list, char*);
 	if (!(str))
 		str = "(null)";
 	conv->len = ft_strlen(str);
@@ -78,3 +78,26 @@ void		ft_print_pct(t_conv *conv, va_list a_list, int *lv)
 		ft_putchar_fd('%', 1);
 	}
 }
+
+void		ft_print_count(t_conv *conv, va_list a_list, int *lv)
+{
+	int		*count;
+
+	count = va_arg(a_list, int*);
+	*count = *lv;
+}
+
+// void			ft_print_float(t_conv *conv, va_list a_list, int *lv)
+// {
+// 	ft_putstr_fd("float", 1);
+// }
+
+// void			ft_print_science(t_conv *conv, va_list a_list, int *lv)
+// {
+// 	ft_putstr_fd("float", 1);
+// }
+
+// void			ft_print_comp_float(t_conv *conv, va_list a_list, int *lv)
+// {
+// 	ft_putstr_fd("float", 1);
+// }

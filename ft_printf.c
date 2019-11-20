@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 10:15:46 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 15:40:22 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/20 16:34:25 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void			ft_flag_vars_set(t_conv *conv)
 	conv->hassign = 0;
 	conv->numlen = 0;
 	conv->size = 0;
+	conv->negmod = 0;
 }
 
 void		ft_converter_link(t_conv *conv, va_list a_list, int *lv)
@@ -37,12 +38,12 @@ void		ft_converter_link(t_conv *conv, va_list a_list, int *lv)
 	funcs[0] = &ft_print_char;
 	funcs[1] = &ft_print_string;
 	funcs[2] = &ft_print_pointer;
-	funcs[3] = &ft_print_int;
-	funcs[4] = &ft_print_int;
-	funcs[5] = &ft_print_uint;
-	funcs[6] = &ft_print_x;
-	funcs[7] = &ft_print_up_x;
-	// funcs[8] = &ft_print_count;
+	funcs[3] = &ft_int_link;
+	funcs[4] = &ft_int_link;
+	funcs[5] = &ft_uint_link;
+	funcs[6] = &ft_x_link;
+	funcs[7] = &ft_up_x_link;
+	funcs[8] = &ft_print_count;
 	// funcs[9] = &ft_print_float;
 	// funcs[10] = &ft_print_science;
 	// funcs[11] = &ft_print_comp_float;
@@ -81,15 +82,6 @@ int			ft_printf(const char *input, ...)
 			if (conv.precision == -1)
 				conv.precision = va_arg(a_list, int);
 			ft_converter_link(&conv, a_list, &lv);
-			// printf("\n	type: %c\n", conv.type);
-			// printf("	width: %d\n", conv.width);
-			// printf("	precision: %d\n", conv.precision);
-			// printf("	hash: %d\n", conv.hash);
-			// printf("	leftj: %d\n", conv.left);
-			// printf("	padzero: %d\n", conv.padzero);
-			// printf("	sign: %c\n", conv.sign);
-			// printf("	hassign: %d\n", conv.hassign);
-			// printf("	length: %d\n", conv.size);
 		}
 		input++;
 	}

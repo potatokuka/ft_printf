@@ -6,20 +6,14 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/16 16:20:16 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 14:37:29 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/19 15:11:28 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 
-void		ft_size_num(t_conv *conv, va_list a_list, int *lv)
-{
-	if (conv->size == 1 || conv->size == 2)
-		ft_ll_num(conv, a_list, lv);
-}
-
-void		ft_ll_num(t_conv *conv, va_list a_list, int *lv)
+void				ft_ll_num(t_conv *conv, va_list a_list, int *lv)
 {
 	long long int num;
 
@@ -47,7 +41,7 @@ void		ft_ll_num(t_conv *conv, va_list a_list, int *lv)
 	}
 }
 
-void		ft_llint_c_fd(long long int num, int *lv)
+void				ft_llint_c_fd(long long int num, int *lv)
 {
 	long long int		res;
 	long long int		power;
@@ -70,7 +64,7 @@ void		ft_llint_c_fd(long long int num, int *lv)
 	}
 }
 
-long long int			ft_ll_nbr_size(t_conv *conv, long long int num)
+long long int		ft_ll_nbr_size(t_conv *conv, long long int num)
 {
 	long long int		tmp;
 	long long int		size;
@@ -87,7 +81,7 @@ long long int			ft_ll_nbr_size(t_conv *conv, long long int num)
 	return (size);
 }
 
-void	ft_conv_ll_int(t_conv *conv, long long int num)
+void				ft_conv_ll_int(t_conv *conv, long long int num)
 {
 	if (num < 0)
 	{
@@ -100,6 +94,4 @@ void	ft_conv_ll_int(t_conv *conv, long long int num)
 	if (conv->precision == -2 ||
 		(conv->precision < conv->numlen && conv->precision != 0))
 		conv->precision = conv->numlen;
-	// if (conv->size == 2)
-	// 	num = ((long)num);
 }
