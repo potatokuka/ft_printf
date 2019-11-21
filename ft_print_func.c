@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 16:18:54 by greed          #+#    #+#                */
-/*   Updated: 2019/11/21 13:17:08 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 17:59:46 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void		ft_print_pct(t_conv *conv, va_list a_list, int *lv)
 
 void		ft_print_count(t_conv *conv, va_list a_list, int *lv)
 {
-	conv->count = *(va_arg(a_list, int*));
-	conv->count = *lv;
+	int		*count;
+
+	count = va_arg(a_list, int*);
+	*count = *lv;
 }
