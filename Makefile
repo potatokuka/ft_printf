@@ -6,7 +6,7 @@
 #    By: greed <greed@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 10:31:09 by greed          #+#    #+#                 #
-#    Updated: 2019/11/21 14:46:21 by greed         ########   odam.nl          #
+#    Updated: 2019/11/21 14:49:07 by greed         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,13 @@ NAME        =   libftprintf.a
 LIBFT		=	libft.a
 CFILES      =   ft_printf.c ft_print_func.c ft_helper.c ft_flag_func.c\
 	ft_print_num.c ft_uint.c ft_x.c ft_sizes_num.c ft_function_links.c\
-	ft_sizes_xx.c ft_llu.c ft_pointer.c
+	ft_sizes_x.c ft_llu.c ft_pointer.c
 OFILES      =   $(CFILES:.c=.o)
 BONUS_PATH	=	./bonus/
-BONUS_SRCS  =	ft_printf_bonus.c ft_print_func_bonus.c ft_helper_bonus.c ft_flag_func_bonus.c\
-	ft_print_num_bonus.c ft_uint_bonus.c ft_xx_bonus.c ft_sizes_num_bonus.c ft_function_links_bonus.c\
-	ft_sizes_xx_bonus.c ft_llu_bonus.c ft_pointer_bonus.c
+BONUS_SRCS  =	ft_printf_bonus.c ft_print_func_bonus.c ft_helper_bonus.c\
+	ft_print_num_bonus.c ft_uint_bonus.c ft_xx_bonus.c ft_sizes_num_bonus.c\
+	ft_sizes_xx_bonus.c ft_llu_bonus.c ft_pointer_bonus.c  ft_flag_func_bonus.c\
+	ft_function_links_bonus.c
 BONUS_OFILES=	$(BONUS_SRCS:.c=.o)
 LIBFT_PATH	=	./libft/
 LIBFT_CFILES	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c\
