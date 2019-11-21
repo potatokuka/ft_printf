@@ -6,14 +6,14 @@
 #    By: greed <greed@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 10:31:09 by greed          #+#    #+#                 #
-#    Updated: 2019/11/21 14:29:26 by greed         ########   odam.nl          #
+#    Updated: 2019/11/21 14:46:21 by greed         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
 LIBFT		=	libft.a
 CFILES      =   ft_printf.c ft_print_func.c ft_helper.c ft_flag_func.c\
-	ft_print_num.c ft_uint.c ft_xx.c ft_sizes_num.c ft_function_links.c\
+	ft_print_num.c ft_uint.c ft_x.c ft_sizes_num.c ft_function_links.c\
 	ft_sizes_xx.c ft_llu.c ft_pointer.c
 OFILES      =   $(CFILES:.c=.o)
 BONUS_PATH	=	./bonus/
