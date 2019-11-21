@@ -6,7 +6,7 @@
 #    By: greed <greed@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 10:31:09 by greed          #+#    #+#                 #
-#    Updated: 2019/11/21 14:49:07 by greed         ########   odam.nl          #
+#    Updated: 2019/11/21 14:53:27 by greed         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ re: fclean all
 
 bonus: $(BONUS_OFILES:%=$(BONUS_PATH)%) $(LIBFT_OFILES:%=$(LIBFT_PATH)%)
 	@echo "$(PINK)Linking the bonusses into the library"
-	@ar rc $(NAME) $(BONUS_OFILES:%=$(BONUS_PATH)%) $(LIBFT_OFILES:%=$(LIBFT_PATH)%)
+	@ar rc $(NAME) $(BONUS_OFILES:%=$(BONUS_PATH)%) \
+		$(LIBFT_OFILES:%=$(LIBFT_PATH)%)
 	@ranlib $(NAME)
 	@echo "$(GREEN)Done"
