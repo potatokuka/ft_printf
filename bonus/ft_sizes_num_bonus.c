@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_sizes_num.c                                     :+:    :+:            */
+/*   ft_sizes_num_bonus.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/16 16:20:16 by greed          #+#    #+#                */
-/*   Updated: 2019/11/21 13:01:15 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 14:20:54 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 void				ft_ll_num(t_conv *conv, va_list a_list, int *lv)
 {

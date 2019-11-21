@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_helper.c                                        :+:    :+:            */
+/*   ft_helper_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 16:31:59 by greed          #+#    #+#                */
-/*   Updated: 2019/11/21 13:20:57 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 14:20:08 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 void			ft_pad_width(int width, int precision, int pad, int *lv)
 {

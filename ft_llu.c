@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 12:53:49 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 13:00:37 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 13:21:13 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		ft_lluint_c_fd(unsigned long long num, int *lv)
 	}
 }
 
-int			ft_llu_nbr_size(t_conv *conv, unsigned long long num)
+int			ft_llu_nbr_size(unsigned long long num)
 {
 	unsigned long long	tmp;
 	int					size;
@@ -87,14 +87,14 @@ int			ft_llu_nbr_size(t_conv *conv, unsigned long long num)
 	return (size);
 }
 
-void	ft_conv_llu_int(t_conv *conv, unsigned long long num)
+void		ft_conv_llu_int(t_conv *conv, unsigned long long num)
 {
 	if (num < 0)
 	{
 		conv->hassign = 1;
 		conv->sign = '-';
 	}
-	conv->numlen = ft_ll_nbr_size(conv, num);
+	conv->numlen = ft_ll_nbr_size(num);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||

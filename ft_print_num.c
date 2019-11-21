@@ -6,58 +6,17 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 13:33:03 by greed          #+#    #+#                */
-/*   Updated: 2019/11/20 16:54:26 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 13:22:08 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 
-int			ft_nbr_size(t_conv *conv, int num)
-{
-	int		tmp;
-	int		size;
-
-	tmp = num;
-	size = 0;
-	if (num == 0)
-		size++;
-	while (tmp)
-	{
-		tmp = tmp / 10;
-		size++;
-	}
-	return (size);
-}
-
-void		ft_intres_c_fd(int num, int *lv)
-{
-	int		res;
-	int		power;
-
-	res = num;
-	power = 1;
-	while (res / 10)
-	{
-		res /= 10;
-		power *= 10;
-	}
-	while (power)
-	{
-		if (num < 0)
-			ft_putchar_c_fd(('0' - num / power), 1, lv);
-		if (!(num < 0))
-			ft_putchar_c_fd(('0' + num / power), 1, lv);
-		num %= power;
-		power /= 10;
-	}
-}
-
-void		ft_print_int(t_conv *conv, va_list a_list, int *lv)
+void	ft_print_int(t_conv *conv, va_list a_list, int *lv)
 {
 	int		num;
 
-	ft_negmod(conv, a_list, lv);
 	num = va_arg(a_list, int);
 	ft_conv_int(conv, &num);
 	if (conv->hassign && (conv->padzero || conv->left))
@@ -82,11 +41,60 @@ void		ft_print_int(t_conv *conv, va_list a_list, int *lv)
 	}
 }
 
-void		ft_negmod(t_conv *conv, va_list a_list, int *lv)
+int		ft_nbr_size(int num)
 {
-	if (conv->negmod && conv->precision == -2)
+	int		tmp;
+	int		size;
+
+	tmp = num;
+	size = 0;
+	if (num == 0)
+		size++;
+	while (tmp)
 	{
-		conv->precision = -2;
-		conv->width = 0;
+		tmp = tmp / 10;
+		size++;
+	}
+	return (size);
+}
+
+void	ft_conv_int(t_conv *conv, int *num)
+{
+	if (conv->size == 3)
+		*num = ((short)*num);
+	if (conv->size == 4)
+		*num = ((char)*num);
+	if (*num < 0)
+	{
+		conv->hassign = 1;
+		conv->sign = '-';
+	}
+	conv->numlen = ft_nbr_size(*num);
+	if (conv->precision != -2)
+		conv->padzero = 0;
+	if (conv->precision == -2 || (conv->precision < conv->numlen && *num != 0))
+		conv->precision = conv->numlen;
+}
+
+void	ft_intres_c_fd(int num, int *lv)
+{
+	int		res;
+	int		power;
+
+	res = num;
+	power = 1;
+	while (res / 10)
+	{
+		res /= 10;
+		power *= 10;
+	}
+	while (power)
+	{
+		if (num < 0)
+			ft_putchar_c_fd(('0' - num / power), 1, lv);
+		if (!(num < 0))
+			ft_putchar_c_fd(('0' + num / power), 1, lv);
+		num %= power;
+		power /= 10;
 	}
 }

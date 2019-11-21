@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_printf_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 10:15:46 by greed          #+#    #+#                */
-/*   Updated: 2019/11/21 12:55:12 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 14:20:50 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 void		ft_flag_vars_set(t_conv *conv)
 {

@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/15 12:14:25 by greed          #+#    #+#                */
-/*   Updated: 2019/11/20 16:57:26 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 12:59:50 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void			ft_print_uint(t_conv *conv, va_list a_list, int *lv)
 {
 	unsigned int		num;
 
-	ft_negmod(conv, a_list, lv);
 	num = va_arg(a_list, unsigned int);
 	ft_conv_uint(conv, num);
 	if (conv->hassign && (conv->padzero || conv->left))
@@ -42,7 +41,7 @@ void			ft_print_uint(t_conv *conv, va_list a_list, int *lv)
 	}
 }
 
-unsigned int	ft_uint_size(t_conv *conv, unsigned int num)
+unsigned int	ft_uint_size(unsigned int num)
 {
 	unsigned int		tmp;
 	int					size;
@@ -66,7 +65,7 @@ void			ft_conv_uint(t_conv *conv, unsigned int num)
 		conv->hassign = 1;
 		conv->sign = '-';
 	}
-	conv->numlen = ft_uint_size(conv, num);
+	conv->numlen = ft_uint_size(num);
 	if (conv->precision != -2)
 		conv->padzero = 0;
 	if (conv->precision == -2 ||

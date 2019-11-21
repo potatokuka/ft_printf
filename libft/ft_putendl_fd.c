@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_convs.c                                         :+:    :+:            */
+/*   ft_putendl_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/14 11:53:05 by greed          #+#    #+#                */
-/*   Updated: 2019/11/18 14:27:49 by greed         ########   odam.nl         */
+/*   Created: 2019/11/04 13:26:39 by greed          #+#    #+#                */
+/*   Updated: 2019/11/04 13:27:50 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
 
-void	ft_conv_int(t_conv *conv, int *num)
+void		ft_putendl_fd(char *s, int fd)
 {
-	if (conv->size == 3)
-		*num = ((short)*num);
-	if (conv->size == 4)
-		*num = ((char)*num);
-	if (*num < 0)
+	int		i;
+
+	i = 0;
+	if (s == 0)
+		return ;
+	while (s[i] != '\0')
 	{
-		conv->hassign = 1;
-		conv->sign = '-';
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	conv->numlen = ft_nbr_size(conv, *num);
-	if (conv->precision != -2)
-		conv->padzero = 0;
-	if (conv->precision == -2 ||
-		(conv->precision < conv->numlen && conv->precision != 0))
-		conv->precision = conv->numlen;
+	ft_putchar_fd('\n', fd);
 }

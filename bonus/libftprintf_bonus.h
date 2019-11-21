@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   libftprintf.h                                      :+:    :+:            */
+/*   libftprintf_bonus.h                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 09:35:37 by greed          #+#    #+#                */
-/*   Updated: 2019/11/21 13:32:23 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 14:18:42 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef LIBFTPRINTF_BONUS_H
+# define LIBFTPRINTF_BONUS_H
 # include <stdarg.h>
 # include <stdio.h>
 

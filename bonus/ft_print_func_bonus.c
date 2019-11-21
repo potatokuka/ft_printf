@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_print_func.c                                    :+:    :+:            */
+/*   ft_print_func_bonus.c                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/12 16:18:54 by greed          #+#    #+#                */
-/*   Updated: 2019/11/21 13:17:08 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 14:20:34 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
 void		ft_print_char(t_conv *conv, va_list a_list, int *lv)
 {

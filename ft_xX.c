@@ -6,7 +6,7 @@
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/15 13:39:27 by greed          #+#    #+#                */
-/*   Updated: 2019/11/20 16:59:32 by greed         ########   odam.nl         */
+/*   Updated: 2019/11/21 13:22:27 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ void		ft_print_x(t_conv *conv, va_list a_list, int *lv)
 {
 	unsigned int		num;
 
-	ft_negmod(conv, a_list, lv);
 	num = va_arg(a_list, unsigned int);
-	ft_conv_x(conv, num);
+	ft_conv_x(conv, &num);
 	if (conv->hash && num != 0 && (conv->left || conv->padzero))
 		ft_putstr_c_fd("0x", 1, 2, lv);
 	if (conv->left)
@@ -42,32 +41,14 @@ void		ft_print_x(t_conv *conv, va_list a_list, int *lv)
 	}
 }
 
-unsigned int		ft_x_size(t_conv *conv, unsigned int num)
+void		ft_conv_x(t_conv *conv, unsigned int *num)
 {
-	unsigned int		tmp;
-	int					size;
-
-	size = 0;
-	tmp = num;
-	if (num == 0)
-		size++;
-	while (tmp)
-	{
-		tmp = tmp / 16;
-		size++;
-	}
-	return (size);
-}
-
-void	ft_conv_x(t_conv *conv, unsigned int num)
-{
-	conv->numlen = ft_x_size(conv, num);
+	conv->numlen = ft_x_size(*num);
 	if (conv->precision != -2)
 		conv->padzero = 0;
-	if (num == 0)
+	if (*num == 0)
 		conv->hash = 0;
-	if (conv->precision == -2 ||
-		(conv->precision < conv->numlen && conv->precision != 0))
+	if (conv->precision == -2 || (conv->precision < conv->numlen && *num != 0))
 		conv->precision = conv->numlen;
 }
 
@@ -121,9 +102,8 @@ void		ft_print_up_x(t_conv *conv, va_list a_list, int *lv)
 {
 	unsigned int		num;
 
-	ft_negmod(conv, a_list, lv);
 	num = va_arg(a_list, unsigned int);
-	ft_conv_x(conv, num);
+	ft_conv_x(conv, &num);
 	if (conv->hash && num != 0 && (conv->left || conv->padzero))
 		ft_putstr_c_fd("0X", 1, 2, lv);
 	if (conv->left)

@@ -6,19 +6,21 @@
 #    By: greed <greed@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/29 10:31:09 by greed          #+#    #+#                 #
-#    Updated: 2019/11/20 15:19:04 by greed         ########   odam.nl          #
+#    Updated: 2019/11/21 14:29:26 by greed         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
 LIBFT		=	libft.a
 CFILES      =   ft_printf.c ft_print_func.c ft_helper.c ft_flag_func.c\
-	ft_print_num.c ft_convs.c ft_uint.c ft_xx.c ft_sizes_num.c\
-	ft_sizes_xx.c ft_llu.c ft_pointer.c ft_function_tag.c
+	ft_print_num.c ft_uint.c ft_xx.c ft_sizes_num.c ft_function_links.c\
+	ft_sizes_xx.c ft_llu.c ft_pointer.c
 OFILES      =   $(CFILES:.c=.o)
-BONUS_SRCS  =
-BONUS_CFILES=	$(BONUS_SRCS:%=%.c)
-BONUS_OFILES=	$(BONUS_CFILES:.c=.o)
+BONUS_PATH	=	./bonus/
+BONUS_SRCS  =	ft_printf_bonus.c ft_print_func_bonus.c ft_helper_bonus.c ft_flag_func_bonus.c\
+	ft_print_num_bonus.c ft_uint_bonus.c ft_xx_bonus.c ft_sizes_num_bonus.c ft_function_links_bonus.c\
+	ft_sizes_xx_bonus.c ft_llu_bonus.c ft_pointer_bonus.c
+BONUS_OFILES=	$(BONUS_SRCS:.c=.o)
 LIBFT_PATH	=	./libft/
 LIBFT_CFILES	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c\
 	ft_isdigit.c ft_isprint.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c\
@@ -31,7 +33,7 @@ LIBFT_CFILES	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c\
 	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c ft_isascii.c\
 	ft_calloc.c
 LIBFT_OFILES=	$(LIBFT_CFILES:.c=.o)
-FLAGS       =   -Wall -Werror -Wextra -Wno-unused-parameter
+FLAGS       =   -Wall -Werror -Wextra
 
 # COLORS
 PINK	= \x1b[35;01m
@@ -44,40 +46,32 @@ RESET	= \x1b[0m
 
 all: $(NAME)
 
-$(NAME): $(OFILES) $(LIBFT)
+$(NAME): $(OFILES) $(LIBFT_OFILES:%=$(LIBFT_PATH)%)
 	@echo "$(YELLOW)Linking the library"
-	@ar rc $(NAME) $(OFILES) $(LIBFT_OFILES:%=./libft/%);
+	@ar rc $(NAME) $(OFILES) $(LIBFT_OFILES:%=$(LIBFT_PATH)%);
 	@ranlib $(NAME)
 	@echo "$(GREEN)Done"
 
 %.o: %.c
 	@echo "$(BLUE)Compiling: $<"
-	@gcc -o $@ -c $< $(FLAGS) -I$(LIBFT_PATH)
-
-$(LIBFT):
-	$(MAKE) -C ./libft all bonus
+	@gcc -o $@ -c $< $(FLAGS) -I$(LIBFT_PATH) -I$(BONUS_PATH)
 
 clean: clean_b
 	@echo "$(RED) Cleaning..."
 	@rm -f $(OFILES)
-	@rm -f $(LIBFT_OFILES:%=./libft/%)
-	@rm -f $(BONUS_OFILES)
+	@rm -f $(LIBFT_OFILES:%=$(LIBFT_PATH)%)
 
 fclean: clean
 	@echo "$(PINK)Big cleaning..."
 	@rm -f $(NAME)
 
 clean_b:
-	@rm -f $(BOFILES)
-	@rm -f $(OFILES)
+	@rm -f $(BONUS_OFILES:%=$(BONUS_PATH)%)
 
 re: fclean all
 
-bonus: $(OFILES) $(BOFILES) $(NAME)
-	@echo "$(YELLOW)Linking the bonusses into the library"
-	@ar rc $(NAME) $(OFILES) $(BOFILES)
+bonus: $(BONUS_OFILES:%=$(BONUS_PATH)%) $(LIBFT_OFILES:%=$(LIBFT_PATH)%)
+	@echo "$(PINK)Linking the bonusses into the library"
+	@ar rc $(NAME) $(BONUS_OFILES:%=$(BONUS_PATH)%) $(LIBFT_OFILES:%=$(LIBFT_PATH)%)
 	@ranlib $(NAME)
 	@echo "$(GREEN)Done"
-
-test: $(NAME)
-	gcc main.c $(NAME) -o tests

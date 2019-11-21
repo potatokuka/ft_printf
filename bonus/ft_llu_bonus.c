@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_sizes_num.c                                     :+:    :+:            */
+/*   ft_llu_bonus.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: greed <greed@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/16 16:20:16 by greed          #+#    #+#                */
-/*   Updated: 2019/11/21 13:01:15 by greed         ########   odam.nl         */
+/*   Created: 2019/11/18 12:53:49 by greed          #+#    #+#                */
+/*   Updated: 2019/11/21 14:20:15 by greed         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 
-void				ft_ll_num(t_conv *conv, va_list a_list, int *lv)
+void		ft_llu(t_conv *conv, va_list a_list, int *lv)
 {
-	long long int num;
+	if (conv->size == 1 || conv->size == 2)
+		ft_llu_num(conv, a_list, lv);
+}
 
-	num = va_arg(a_list, long long int);
-	ft_conv_ll_int(conv, num);
+void		ft_llu_num(t_conv *conv, va_list a_list, int *lv)
+{
+	unsigned long long num;
+
+	num = va_arg(a_list, unsigned long long);
+	ft_conv_llu_int(conv, num);
 	if (conv->hassign && (conv->padzero || conv->left))
 		ft_putchar_c_fd(conv->sign, 1, lv);
 	if (conv->left)
 	{
 		ft_pad_width(conv->precision, conv->numlen, '0', lv);
 		if (conv->precision)
-			ft_llint_c_fd(num, lv);
+			ft_lluint_c_fd(num, lv);
 	}
 	if (!conv->left && conv->padzero)
 		ft_pad_width(conv->width, conv->precision + conv->hassign, '0', lv);
@@ -37,14 +43,14 @@ void				ft_ll_num(t_conv *conv, va_list a_list, int *lv)
 			ft_putchar_c_fd(conv->sign, 1, lv);
 		ft_pad_width(conv->precision, conv->numlen, '0', lv);
 		if (conv->precision)
-			ft_llint_c_fd(num, lv);
+			ft_lluint_c_fd(num, lv);
 	}
 }
 
-void				ft_llint_c_fd(long long int num, int *lv)
+void		ft_lluint_c_fd(unsigned long long num, int *lv)
 {
-	long long int		res;
-	long long int		power;
+	unsigned long long	res;
+	unsigned long long	power;
 
 	res = num;
 	power = 1;
@@ -64,10 +70,10 @@ void				ft_llint_c_fd(long long int num, int *lv)
 	}
 }
 
-long long int		ft_ll_nbr_size(long long int num)
+int			ft_llu_nbr_size(unsigned long long num)
 {
-	long long int		tmp;
-	long long int		size;
+	unsigned long long	tmp;
+	int					size;
 
 	tmp = num;
 	size = 0;
@@ -81,7 +87,7 @@ long long int		ft_ll_nbr_size(long long int num)
 	return (size);
 }
 
-void				ft_conv_ll_int(t_conv *conv, long long int num)
+void		ft_conv_llu_int(t_conv *conv, unsigned long long num)
 {
 	if (num < 0)
 	{
